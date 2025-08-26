@@ -1,0 +1,471 @@
+:root {
+    --color-bg: #0e0e0e;
+    --color-white: #ffffff;
+    --color-white-soft: #c5c5c5;
+    --color-accent-blue: #5A7EFF;
+    --color-accent-orange: #FF7F37;
+    --color-glass: rgba(255, 255, 255, 0.05);
+    --color-glass-border: rgba(255, 255, 255, 0.1);
+    --color-footer-text: #ccc;
+    --color-footer-bottom: #888;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+/* Background & Global */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--color-bg);
+    color: var(--color-white);
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    line-height: 1.6;
+    color: var(--color-white-soft);
+}
+
+/* Background Glow Blobs */
+.bg-effect {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(250px);  
+    z-index: -1;
+    opacity: 0.45;             
+    mix-blend-mode: screen;
+}
+
+.bg-primary {
+    background: radial-gradient(circle, var(--color-accent-blue) 0%, transparent 70%);
+    top: -200px;
+    left: -200px;
+    animation: float 10s infinite alternate;
+}
+
+.bg-secondary {
+    background: radial-gradient(circle, var(--color-accent-orange) 0%, transparent 70%);
+    bottom: -200px;
+    right: -200px;
+    animation: float 12s infinite alternate;
+}
+
+.bg-mixed {
+    background: radial-gradient(circle at center,
+        var(--color-accent-blue) 0%,
+        var(--color-accent-orange) 50%,
+        transparent 85%);
+    top: 150%;
+    left: 30%;
+    width: 700px;
+    height: 700px;
+    animation: float 15s infinite alternate-reverse;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(0) translateX(0);
+    }
+    to {
+        transform: translateY(-60px) translateX(60px);
+    }
+}
+
+
+/* Navbar Styling */
+.navbar {
+    background: var(--color-glass);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s, box-shadow 0.3s;
+    padding: 12px 0;
+    z-index: 999;
+}
+
+/* Remove Bootstrap's default focus & tap highlights */
+.navbar *:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* Navbar Brand Logo */
+.navbar-brand img {
+    height: 28px;
+}
+
+/* Nav Links */
+.navbar-nav .nav-link {
+    color: var(--color-white);
+    margin: 0 15px;
+    font-weight: 500;
+    padding: 10px 5px;
+    position: relative;
+    transition: 0.3s;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--color-accent-orange) !important;
+}
+
+/* Active Nav Underline Indicator */
+.navbar-nav .nav-link.active::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-accent-orange);
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s;
+}
+
+/* Spacing in Nav Items (Desktop) */
+.navbar-nav {
+    gap: 15px;
+}
+
+/* Hamburger Icon Styling */
+.navbar-toggler {
+    border: none;
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+.navbar-toggler:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Custom Hamburger Icon (override Bootstrap icon color) */
+.navbar-toggler-icon {
+    background-image: none;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-white);
+    display: block;
+    position: relative;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-white);
+    transition: all 0.3s;
+}
+
+.navbar-toggler-icon::before {
+    top: -7px;
+}
+
+.navbar-toggler-icon::after {
+    top: 7px;
+}
+
+/* Responsive Nav (Mobile) */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background: var(--color-glass);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        padding: 20px;
+        margin-top: 10px;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .navbar-nav .nav-link {
+        padding-left: 5px;
+        font-size: 1rem;
+    }
+
+    .navbar-toggler-icon,
+    .navbar-toggler-icon::before,
+    .navbar-toggler-icon::after {
+        background-color: var(--color-accent-blue);
+        /* Match theme */
+    }
+}
+
+
+/* Hero */
+.hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 120px 20px 80px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-accent-blue);
+}
+
+.hero p {
+    color: var(--color-white-soft);
+    max-width: 650px;
+    margin: 15px auto;
+}
+
+.btn-custom {
+    background: linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-orange));
+    border: none;
+    color: var(--color-white);
+    padding: 12px 28px;
+    border-radius: 30px;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.btn-custom:hover {
+    transform: scale(1.05);
+}
+
+/* Sections */
+section {
+    padding: 80px 0;
+}
+
+.section-title {
+    font-weight: 600;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--color-accent-orange);
+}
+
+.glass-card {
+    background: var(--color-glass);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.glass-card:hover {
+    transform: translateY(-8px);
+    border: 1px solid var(--color-glass-border);
+}
+
+.glass-card i {
+    font-size: 40px;
+    margin-bottom: 30px !important;
+    color: var(--color-accent-blue);
+}
+.glass-card h5 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 15px;
+    color: var(--color-white);
+}
+
+/* Clients Section Styles */
+#clients {
+    text-align: center;
+}
+
+.clients-carousel .item {
+    display: flex;
+    align-items: center;      /* vertical center */
+    justify-content: center;  /* horizontal center */
+    height: 120px;            /* ensure consistent height */
+    padding: 20px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.clients-carousel .item img {
+    max-height: 80px;
+    max-width: 160px;
+    object-fit: contain;
+    filter: grayscale(100%) brightness(0.9);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.clients-carousel .item img:hover {
+    filter: grayscale(0%) brightness(1.05);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+
+/* Remove default Owl dots & nav for clean UI */
+.clients-carousel .owl-dots,
+.clients-carousel .owl-nav {
+    display: none !important;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    .clients-carousel .item img {
+        max-height: 60px;
+        max-width: 120px;
+    }
+}
+
+/* Testimonials */
+.testimonial {
+    background: var(--color-glass);
+    border-radius: 15px;
+    padding: 25px;
+    font-size: 15px;
+    color: var(--color-white-soft);
+    backdrop-filter: blur(10px);
+}
+
+.testimonial strong {
+    color: var(--color-accent-orange);
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+    background: var(--color-glass);
+    backdrop-filter: blur(12px);
+    padding-top: 50px !important;
+    padding-bottom: 20px !important;
+}
+
+footer h5 {
+    color: var(--color-accent-blue);
+    margin-bottom: 20px;
+}
+
+footer p,
+footer a {
+    color: var(--color-footer-text);
+    font-size: 14px;
+}
+
+footer a:hover {
+    color: var(--color-accent-orange);
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--color-glass-border);
+    padding-top: 15px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--color-footer-bottom);
+}
+
+/* Social Icons */
+.footer-social {
+    margin-top: 15px;
+    display: flex;
+    gap: 12px;
+}
+
+.footer-social a {
+    text-decoration: none;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    padding: auto;
+    border-radius: 50%;
+    background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
+    transition: 0.3s;
+}
+
+.footer-social a i {
+    color: var(--color-accent-blue);
+    transition: color 0.3s;
+}
+
+/* Hover effect with theme colors */
+.footer-social a:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.footer-social a:hover i {
+    color: var(--color-accent-orange);
+}
+
+
+/* Sticky WhatsApp Button with Text */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    background: var(--color-glass);
+    backdrop-filter: blur(12px);
+    border-radius: 50px;
+    color: #25D366;
+    /* WhatsApp green */
+    font-size: 18px;
+    font-weight: 500;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--color-glass-border);
+    transition: transform 0.3s, background 0.3s;
+    z-index: 1000;
+}
+
+.whatsapp-float i {
+    font-size: 28px;
+}
+
+.whatsapp-float span {
+    color: var(--color-white-soft);
+    white-space: nowrap;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.05);
+    background: rgba(37, 211, 102, 0.15);
+    /* subtle green glow */
+}
+
+/* Responsive: smaller size on small screens */
+@media (max-width: 768px) {
+    .whatsapp-float {
+        padding: 8px 14px;
+        font-size: 14px;
+        gap: 6px;
+    }
+
+    .whatsapp-float i {
+        font-size: 22px;
+    }
+
+    .whatsapp-float span {
+        font-size: 14px;
+    }
+}
