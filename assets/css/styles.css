@@ -8,6 +8,8 @@
     --color-glass-border: rgba(255, 255, 255, 0.1);
     --color-footer-text: #ccc;
     --color-footer-bottom: #888;
+    --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-heading: 'Poppins', 'Inter', system-ui, sans-serif;
 }
 
 html,
@@ -18,12 +20,11 @@ body {
 
 /* Background & Global */
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background: var(--color-bg);
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.6;
     color: var(--color-white);
-    font-family: 'Poppins', sans-serif;
+    background: var(--color-bg);
     overflow-x: hidden;
     position: relative;
 }
@@ -37,53 +38,113 @@ p {
     color: var(--color-white-soft);
 }
 
+.btn-custom {
+    background: linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-orange));
+    border: none;
+    color: var(--color-white);
+    padding: 12px 28px;
+    border-radius: 30px;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.btn-custom:hover {
+    transform: scale(1.05);
+}
+
+/* Sections */
+section {
+    padding: 80px 0;
+}
+
+/* Section Header */
+.section_header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 50px;
+}
+
+.section-title {
+    font-weight: 600;
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 10px;
+    color: var(--color-accent-orange);
+}
+
+.section-subtitle {
+    font-size: 1rem;
+    color: var(--color-white-soft);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Smooth fade-in animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
 /* Background Glow Blobs */
 .bg-effect {
     position: absolute;
-    width: 600px;
-    height: 600px;
+    width: clamp(200px, 40vw, 600px);
+    height: clamp(200px, 40vw, 600px);
     border-radius: 50%;
-    filter: blur(250px);  
+    filter: blur(20vw);
     z-index: -1;
-    opacity: 0.45;             
+    opacity: 0.50;
     mix-blend-mode: screen;
 }
 
+/* Blue Blob */
 .bg-primary {
     background: radial-gradient(circle, var(--color-accent-blue) 0%, transparent 70%);
-    top: -200px;
-    left: -200px;
+    top: -15%;
+    left: -15%;
     animation: float 10s infinite alternate;
 }
 
+/* Orange Blob */
 .bg-secondary {
     background: radial-gradient(circle, var(--color-accent-orange) 0%, transparent 70%);
-    bottom: -200px;
-    right: -200px;
+    bottom: -15%;
+    right: -15%;
     animation: float 12s infinite alternate;
 }
 
+/* Mixed Blob */
 .bg-mixed {
     background: radial-gradient(circle at center,
-        var(--color-accent-blue) 0%,
-        var(--color-accent-orange) 50%,
-        transparent 85%);
-    top: 150%;
+            var(--color-accent-blue) 0%,
+            var(--color-accent-orange) 50%,
+            transparent 85%);
+    top: 120%;
     left: 30%;
-    width: 700px;
-    height: 700px;
+    width: clamp(250px, 50vw, 700px);
+    height: clamp(250px, 50vw, 700px);
     animation: float 15s infinite alternate-reverse;
 }
 
+/* Floating Animation */
 @keyframes float {
     from {
         transform: translateY(0) translateX(0);
     }
+
     to {
         transform: translateY(-60px) translateX(60px);
     }
 }
-
 
 /* Navbar Styling */
 .navbar {
@@ -151,7 +212,7 @@ p {
     background: rgba(255, 255, 255, 0.25);
 }
 
-/* Custom Hamburger Icon (override Bootstrap icon color) */
+/* Custom Hamburger Icon */
 .navbar-toggler-icon {
     background-image: none;
     width: 24px;
@@ -180,49 +241,28 @@ p {
     top: 7px;
 }
 
-/* Responsive Nav (Mobile) */
-@media (max-width: 991px) {
-    .navbar-collapse {
-        background: var(--color-glass);
-        backdrop-filter: blur(10px);
-        border-radius: 12px;
-        padding: 20px;
-        margin-top: 10px;
-    }
-
-    .navbar-nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-    }
-
-    .navbar-nav .nav-link {
-        padding-left: 5px;
-        font-size: 1rem;
-    }
-
-    .navbar-toggler-icon,
-    .navbar-toggler-icon::before,
-    .navbar-toggler-icon::after {
-        background-color: var(--color-accent-blue);
-        /* Match theme */
-    }
-}
-
-
 /* Hero */
 .hero {
-    min-height: 80vh;
+    min-height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    text-align: center;
-    padding: 120px 20px 80px;
 }
 
+.hero-content {
+    padding: 180px 10px;
+}
+
+.hero-tagline {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--color-accent-orange);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
 .hero h1 {
-    font-size: 3rem;
+    font-size: 5rem;
     font-weight: 700;
     color: var(--color-accent-blue);
 }
@@ -230,39 +270,36 @@ p {
 .hero p {
     color: var(--color-white-soft);
     max-width: 650px;
-    margin: 15px auto;
+    margin: 25px auto;
 }
-
-.btn-custom {
-    background: linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-orange));
-    border: none;
-    color: var(--color-white);
-    padding: 12px 28px;
-    border-radius: 30px;
-    margin-top: 20px;
-    transition: 0.3s;
-}
-
-.btn-custom:hover {
-    transform: scale(1.05);
-}
-
-/* Sections */
-section {
-    padding: 80px 0;
-}
-
-.section-title {
-    font-weight: 600;
+/* Scroll Down Button */
+.scroll-down {
+    display: inline-block;
+    margin-top: 40px;
     font-size: 2rem;
-    text-align: center;
-    margin-bottom: 50px;
     color: var(--color-accent-orange);
+    animation: bounce 1.5s infinite;
+    transition: color 0.3s;
 }
+
+.scroll-down:hover {
+    color: var(--color-accent-blue);
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
 
 .glass-card {
     background: var(--color-glass);
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 30px;
     text-align: center;
     backdrop-filter: blur(10px);
@@ -277,9 +314,11 @@ section {
 
 .glass-card i {
     font-size: 40px;
-    margin-bottom: 30px !important;
+    margin-bottom: 20px !important;
+    padding: 10px 12px;
     color: var(--color-accent-blue);
 }
+
 .glass-card h5 {
     font-size: 1.25rem;
     font-weight: 600;
@@ -294,9 +333,9 @@ section {
 
 .clients-carousel .item {
     display: flex;
-    align-items: center;      /* vertical center */
-    justify-content: center;  /* horizontal center */
-    height: 120px;            /* ensure consistent height */
+    align-items: center;
+    justify-content: center;
+    height: 120px;
     padding: 20px;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
@@ -316,34 +355,81 @@ section {
     transform: scale(1.1);
 }
 
-
 /* Remove default Owl dots & nav for clean UI */
 .clients-carousel .owl-dots,
 .clients-carousel .owl-nav {
     display: none !important;
 }
 
-/* Responsive tweaks */
-@media (max-width: 768px) {
-    .clients-carousel .item img {
-        max-height: 60px;
-        max-width: 120px;
-    }
-}
-
-/* Testimonials */
-.testimonial {
+/* Testimonial Card */
+.testimonial-card {
     background: var(--color-glass);
-    border-radius: 15px;
-    padding: 25px;
-    font-size: 15px;
+    border-radius: 20px;
+    padding: 30px 25px;
+    text-align: center;
     color: var(--color-white-soft);
     backdrop-filter: blur(10px);
+    transition: all 0.5s ease;
+    transform: scale(0.85);
+    filter: blur(2px) brightness(0.8);
+    opacity: 0.6;
 }
 
-.testimonial strong {
+/* Focused center */
+.testimonial-carousel .center .testimonial-card {
+    transform: scale(1.1);
+    filter: blur(0) brightness(1);
+    opacity: 1;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Quote Icon */
+.quote-icon {
+    font-size: 40px;
+    color: var(--color-accent-blue);
+    margin-bottom: 15px;
+}
+
+/* Feedback text */
+.testimonial-text {
+    font-size: 16px;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: var(--color-white);
+}
+
+/* Footer layout */
+.testimonial-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    text-align: left;
+}
+
+/* Profile Image */
+.testimonial-img {
+    width: 60px !important;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid var(--color-accent-blue);
+}
+
+/* Name & Designation */
+.testimonial-info h5 {
+    margin: 0;
+    font-size: 18px;
+    color: var(--color-white-soft);
+    font-weight: 600;
+}
+
+.testimonial-info small {
+    font-size: 12px;
     color: var(--color-accent-orange);
 }
+
+
 
 /* Footer */
 footer {
@@ -405,7 +491,7 @@ footer a:hover {
     transition: color 0.3s;
 }
 
-/* Hover effect with theme colors */
+/* Hover effect */
 .footer-social a:hover {
     transform: scale(1.1);
     background: rgba(255, 255, 255, 0.08);
@@ -414,7 +500,6 @@ footer a:hover {
 .footer-social a:hover i {
     color: var(--color-accent-orange);
 }
-
 
 /* Sticky WhatsApp Button with Text */
 .whatsapp-float {
@@ -429,7 +514,6 @@ footer a:hover {
     backdrop-filter: blur(12px);
     border-radius: 50px;
     color: #25D366;
-    /* WhatsApp green */
     font-size: 18px;
     font-weight: 500;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
@@ -450,22 +534,4 @@ footer a:hover {
 .whatsapp-float:hover {
     transform: scale(1.05);
     background: rgba(37, 211, 102, 0.15);
-    /* subtle green glow */
-}
-
-/* Responsive: smaller size on small screens */
-@media (max-width: 768px) {
-    .whatsapp-float {
-        padding: 8px 14px;
-        font-size: 14px;
-        gap: 6px;
-    }
-
-    .whatsapp-float i {
-        font-size: 22px;
-    }
-
-    .whatsapp-float span {
-        font-size: 14px;
-    }
 }
