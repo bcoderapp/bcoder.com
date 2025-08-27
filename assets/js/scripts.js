@@ -32,8 +32,8 @@ $(document).ready(function () {
       loop: true,
       margin: 30,
       autoplay: true,
-      autoplayTimeout: 2500,
-      autoplayHoverPause: true,
+      autoplayTimeout: 1500,
+      autoplayHoverPause: false,
       responsiveClass: true,
       dots: false,
       nav: false,
@@ -53,3 +53,34 @@ $(document).ready(function () {
       }
     });
   });
+
+  // Testimonials Carousel
+  $('.testimonial-carousel').owlCarousel({
+  loop: true,
+  margin: 30,
+  center: true,
+  autoplay: true,
+  autoplayTimeout: 3500,
+  smartSpeed: 900,
+  responsive: {
+    0: { items: 1 },
+    768: { items: 3 }
+  }
+});
+
+// Fade-in content on scroll
+document.addEventListener("DOMContentLoaded", function () {
+  const fadeElements = document.querySelectorAll(".fade-in");
+
+  function checkVisibility() {
+    fadeElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        el.classList.add("visible");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", checkVisibility);
+  checkVisibility(); // initial call
+});

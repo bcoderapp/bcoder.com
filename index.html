@@ -5,6 +5,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BCODER - Software Development Company</title>
+    <!-- Modern Smart Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Owl Carousel CSS -->
@@ -12,15 +17,16 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
-
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
 </head>
 
 <body>
     <!-- Background Blobs -->
-    <div class="bg-effect bg-primary"></div>
+    <!-- <div class="bg-effect bg-primary"></div>
     <div class="bg-effect bg-secondary"></div>
-    <div class="bg-effect bg-mixed"></div>
+    <div class="bg-effect bg-mixed"></div> -->
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
@@ -30,7 +36,7 @@
             </a>
             <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon bg-light rounded"></span>
+                <span class="navbar-toggler-icon rounded"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
@@ -54,21 +60,33 @@
 
     <!-- Hero -->
     <section id="hero" class="hero">
-        <h1>Transforming Ideas into Digital Reality</h1>
-        <p>
-            At <strong>BCODER</strong>, we craft cutting-edge <strong>Websites</strong>,
-            <strong>Mobile Applications</strong>, and <strong>Branding Solutions</strong>
-            that drive growth, inspire trust, and create lasting digital impact.
-            Partner with us to elevate your business in today’s competitive market.
-        </p>
-        <a href="#services" class="btn btn-custom">Discover Our Expertise</a>
+        <div class="container text-center">
+            <div class="hero-content">
+                <span class="hero-tagline">"Shaping the Future with Code"</span>
+            <h1 class="fade-in">Empowering Brands with Next-Gen Digital Solutions</h1>
+            <p class="fade-in">
+                At <strong>bcoder</strong>, we design <strong>impactful websites</strong>,
+                <strong>scalable mobile apps</strong>, and <strong>strategic branding</strong>
+                that help businesses grow, engage, and stand out in the digital era.
+            </p>
+            <a href="#services" class="btn btn-custom fade-in">Discover Our Expertise</a>
+            <br>
+            <a href="#services" class="scroll-down">
+                <i class="bi bi-chevron-down"></i>
+            </a>
+            </div>
+        </div>
     </section>
 
     <!-- Services -->
     <section id="services">
         <div class="container">
-            <h2 class="section-title">What We Provide</h2>
-            <div class="row g-4">
+            <div class="section_header fade-in text-center">
+                <h2 class="section-title">Our Core Expertise</h2>
+                <p class="section-subtitle">Tailored digital services that accelerate innovation, boost engagement, and maximize business success.
+                </p>
+            </div>
+            <div class="row g-4 fade-in">
                 <div class="col-md-3 col-6">
                     <div class="glass-card">
                         <i class="bi bi-window"></i>
@@ -101,11 +119,44 @@
         </div>
     </section>
 
+    <!-- Clients -->
+    <section id="clients">
+        <div class="container">
+            <div class="section_header fade-in text-center">
+                <h2 class="section-title">Brands That Believe in Us</h2>
+                <p class="section-subtitle">Trusted by startups, enterprises, and global businesses to deliver measurable results.</p>
+            </div>
+            <div class="owl-carousel clients-carousel fade-in">
+                <div class="item">
+                    <img src="assets/images/clients/c1.png" alt="Client 1" />
+                </div>
+                <div class="item">
+                    <img src="assets/images/clients/c2.png" alt="Client 2" />
+                </div>
+                <div class="item">
+                    <img src="assets/images/clients/c3.png" alt="Client 3" />
+                </div>
+                <div class="item">
+                    <img src="assets/images/clients/c4.png" alt="Client 4" />
+                </div>
+                <div class="item">
+                    <img src="assets/images/clients/c5.png" alt="Client 5" />
+                </div>
+                <div class="item">
+                    <img src="assets/images/clients/c6.png" alt="Client 6" />
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Why Choose Us -->
     <section id="choose">
         <div class="container">
-            <h2 class="section-title">Why Choose BCODER?</h2>
-            <div class="row g-4">
+            <div class="section_header fade-in text-center">
+                <h2 class="section-title">Why Businesses Trust BCODER</h2>
+                <p class="section-subtitle">A perfect balance of innovation, reliability, and expertise to transform your ideas into lasting success.</p>
+            </div>
+            <div class="row g-4 fade-in">
                 <div class="col-md-4">
                     <div class="glass-card">
                         <i class="bi bi-lightning"></i>
@@ -152,70 +203,93 @@
         </div>
     </section>
 
-    <!-- Call to Action -->
-    <section class="text-center">
-        <div class="container">
-            <h2 class="section-title">Ready to Start Your Project?</h2>
-            <p>Let BCODER build your next big idea into reality.</p>
-            <a href="#footer" class="btn btn-custom">Contact Us</a>
-        </div>
-    </section>
-
-    <!-- Clients -->
-    <section id="clients">
-        <div class="container">
-            <h2 class="section-title">Meet Our Happy Clients</h2>
-
-            <div class="owl-carousel clients-carousel">
-                <div class="item">
-                    <img src="assets/images/clients/c1.png" alt="Client 1" />
-                </div>
-                <div class="item">
-                    <img src="assets/images/clients/c2.png" alt="Client 2" />
-                </div>
-                <div class="item">
-                    <img src="assets/images/clients/c3.png" alt="Client 3" />
-                </div>
-                <div class="item">
-                    <img src="assets/images/clients/c4.png" alt="Client 4" />
-                </div>
-                <div class="item">
-                    <img src="assets/images/clients/c5.png" alt="Client 5" />
-                </div>
-                <div class="item">
-                    <img src="assets/images/clients/c6.png" alt="Client 6" />
-                </div>
-            </div>
-        </div>
-    </section>
-
 
     <!-- Testimonials -->
     <section id="testimonials">
         <div class="container">
-            <h2 class="section-title">What Our Clients Say</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="testimonial">
-                        "BCODER delivered our project on time with amazing quality!"
-                        <br /><strong>- John Doe</strong>
+            <div class="section_header fade-in text-center">
+                <h2 class="section-title">Words That Inspire Us</h2>
+                <p class="section-subtitle">Discover how our clients achieved growth and innovation with BCODER’s solutions.</p>
+            </div>
+            <div class="owl-carousel testimonial-carousel fade-in">
+
+                <!-- Item 1 -->
+                <div class="testimonial-item">
+                    <div class="testimonial-card">
+                        <div class="quote-icon">
+                            <i class="bi bi-quote"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "Since integrating this solution into our workflow, we’ve experienced
+                            a significant improvement in efficiency and collaboration."
+                        </p>
+                        <div class="testimonial-footer">
+                            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                                alt="Sarah Johnson" class="testimonial-img">
+                            <div class="testimonial-info">
+                                <h5>Muhibur Rahman Shafy</h5>
+                                <small>Data Scientist</small>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="testimonial">
-                        "Fantastic mobile app experience, the team is highly skilled."
-                        <br /><strong>- Sarah Lee</strong>
+
+                <!-- Item 2 -->
+                <div class="testimonial-item">
+                    <div class="testimonial-card">
+                        <div class="quote-icon">
+                            <i class="bi bi-quote"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "I’ve tested numerous options in this category, but one stands out
+                            for its intuitive design and comprehensive functionality."
+                        </p>
+                        <div class="testimonial-footer">
+                            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                                alt="David Patel" class="testimonial-img">
+                            <div class="testimonial-info">
+                                <h5>Md. Abdal Ahmed</h5>
+                                <small>Founder & CEO, ENFOREX</small>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="testimonial">
-                        "Our brand identity completely transformed with BCODER’s designs."
-                        <br /><strong>- Mark Wilson</strong>
+
+                <!-- Item 3 -->
+                <div class="testimonial-item">
+                    <div class="testimonial-card">
+                        <div class="quote-icon">
+                            <i class="bi bi-quote"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "The tool we’ve adopted has surpassed expectations, providing
+                            invaluable insights and support as our business continues to grow."
+                        </p>
+                        <div class="testimonial-footer">
+                            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                                alt="Emily Carter" class="testimonial-img">
+                            <div class="testimonial-info">
+                                <h5>Qamrul Islam</h5>
+                                <small>Co-Founder, Connect2Globe</small>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
+
+
+    <!-- Call to Action -->
+    <section class="text-center fade-in">
+        <div class="container">
+            <h2 class="section-title">Let’s Build Something Extraordinary Together</h2>
+            <p>From concept to launch, we turn your boldest ideas into powerful digital experiences.</p>
+            <a href="#footer" class="btn btn-custom">Contact Us</a>
+        </div>
+    </section>
+
 
     <!-- Footer -->
     <footer id="footer">
