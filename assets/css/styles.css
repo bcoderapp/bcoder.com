@@ -29,6 +29,33 @@ body {
     position: relative;
 }
 
+/* Background Glow Effects */
+.bg-effects {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Don't block interactions */
+    z-index: -1; /* Behind everything */
+    overflow: hidden;
+    background: radial-gradient(circle at 20% 20%, rgba(90, 126, 255, 0.25), transparent 70%),
+                radial-gradient(circle at 80% 30%, rgba(255, 127, 55, 0.25), transparent 70%),
+                radial-gradient(circle at 50% 80%, rgba(90, 126, 255, 0.2), transparent 70%);
+    animation: bgMove 15s ease-in-out infinite alternate;
+}
+
+/* Subtle animation to mimic glowing movement */
+@keyframes bgMove {
+    0% {
+        background-position: 20% 20%, 80% 30%, 50% 80%;
+    }
+    100% {
+        background-position: 25% 25%, 75% 35%, 55% 75%;
+    }
+}
+
+
 a {
     text-decoration: none;
 }
@@ -91,59 +118,6 @@ section {
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
-}
-
-
-/* Background Glow Blobs */
-.bg-effect {
-    position: absolute;
-    width: clamp(200px, 40vw, 600px);
-    height: clamp(200px, 40vw, 600px);
-    border-radius: 50%;
-    filter: blur(20vw);
-    z-index: -1;
-    opacity: 0.50;
-    mix-blend-mode: screen;
-}
-
-/* Blue Blob */
-.bg-primary {
-    background: radial-gradient(circle, var(--color-accent-blue) 0%, transparent 70%);
-    top: -15%;
-    left: -15%;
-    animation: float 10s infinite alternate;
-}
-
-/* Orange Blob */
-.bg-secondary {
-    background: radial-gradient(circle, var(--color-accent-orange) 0%, transparent 70%);
-    bottom: -15%;
-    right: -15%;
-    animation: float 12s infinite alternate;
-}
-
-/* Mixed Blob */
-.bg-mixed {
-    background: radial-gradient(circle at center,
-            var(--color-accent-blue) 0%,
-            var(--color-accent-orange) 50%,
-            transparent 85%);
-    top: 120%;
-    left: 30%;
-    width: clamp(250px, 50vw, 700px);
-    height: clamp(250px, 50vw, 700px);
-    animation: float 15s infinite alternate-reverse;
-}
-
-/* Floating Animation */
-@keyframes float {
-    from {
-        transform: translateY(0) translateX(0);
-    }
-
-    to {
-        transform: translateY(-60px) translateX(60px);
-    }
 }
 
 /* Navbar Styling */
@@ -249,7 +223,7 @@ section {
 }
 
 .hero-content {
-    padding: 180px 10px;
+    padding: 100px 10px;
 }
 
 .hero-tagline {
